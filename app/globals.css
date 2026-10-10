@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #1b2a41;
+  --color-apricot: #f28c4b;
+  --color-apricot-deep: #d9722f;
+  --color-cream: #faf6f0;
+  --color-paper: #fffdf9;
+  --color-warm-gray: #6b645c;
+  --color-warm-line: #e6ddd0;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-dm), system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html {
+  background: var(--color-cream);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Bord en dents de ticket de caisse : détail signature */
+.ticket {
+  position: relative;
+  background: var(--color-paper);
+  filter: drop-shadow(0 2px 0 var(--color-warm-line));
+}
+
+.ticket::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 9px;
+  background: conic-gradient(
+      from -45deg at bottom,
+      transparent,
+      var(--color-paper) 1deg 89deg,
+      transparent 90deg
+    )
+    50% / 18px 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn-cta {
+    transition:
+      transform 120ms ease,
+      background-color 120ms ease;
+  }
+  .btn-cta:active {
+    transform: translateY(1px);
+  }
+}
